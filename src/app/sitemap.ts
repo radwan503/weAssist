@@ -4,7 +4,7 @@ export const dynamic = "force-static"; // required for output: 'export'
 export const revalidate = false;       // explicit: no ISR
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://radwan503.github.io/weAssist/";
   // Use fixed dates or build-time constants for static export.
   const lastModified = new Date("2025-01-01"); // or the date you last updated
 

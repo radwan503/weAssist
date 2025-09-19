@@ -7,7 +7,7 @@ import { Navbar } from "@/components/_common/Header";
 import Footer from "@/components/_common/Footer";
 
 const siteName = "weAssist Maintenance & Support";
-const siteUrl = "https://www.yourdomain.com";
+const siteUrl = "https://radwan503.github.io/weAssist/";
 const siteDescription =
   "Reliable 24/7 website maintenance & technical support: updates, uptime monitoring, security hardening, backups, performance tuning, and rapid incident response.";
 

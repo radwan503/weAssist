@@ -7,7 +7,7 @@ const steps = [
   {
     title: "Design Without Limits",
     desc: "Visually craft forms, surveys, and workflows with drag-and-drop simplicity. Zero coding, full flexibility.",
-    img: "/gif1.gif",
+    img: "gif1.gif",
     tags: ["Drag & Drop", "Reusable Blocks", "Theme-aware"],
     features: [
       "Component library with inputs, logic blocks, and validations",
@@ -25,7 +25,7 @@ const steps = [
   {
     title: "Control Access Intelligently",
     desc: "Securely manage user roles, gated content, and tiered memberships — all in a few clicks.",
-    img: "/gif2.gif",
+    img: "gif2.gif",
     tags: ["RBAC", "SSO/SAML", "Audit Logs"],
     features: [
       "Role-based policies with per-field visibility",
@@ -43,7 +43,7 @@ const steps = [
   {
     title: "Monetize with Ease",
     desc: "Integrate Stripe, PayPal, or crypto. Charge per submission, subscription, or premium feature effortlessly.",
-    img: "/gif3.gif",
+    img: "gif3.gif",
     tags: ["Stripe", "PayPal", "Crypto"],
     features: [
       "Plans, coupons, add-ons, usage metering, and proration",

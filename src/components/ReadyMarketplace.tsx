@@ -46,7 +46,7 @@ export default function ReadyMarketplaceModern({
   subtitle = `Do you have a marketplace or e-commerce website?\nDo you need a professional to maintain your website?\nWe are here to provide extra care to your website`,
   bulletsLeft = ["Plugin update", "Server management", "Security management"],
   bulletsRight = ["Bug Fixing", "Content Building", "Cache management"],
-  illustration = "/heroI.svg",
+  illustration = "heroI.svg",
   services = [
     { title: "Maintenance", desc: "Core, theme & plugin updates with rollback safety." },
     { title: "Performance", desc: "Caching, CDN, image optimization & Core Web Vitals." },

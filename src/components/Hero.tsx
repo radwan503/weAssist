@@ -65,7 +65,7 @@ export default function SupportLanding() {
           <div className="relative mx-auto w-full max-w-xl">
             <div className="absolute -inset-6 -z-10 rounded-[28px] bg-white/10 blur-2xl" />
             <img
-              src="/heroI.svg"
+              src="heroI.svg"
               alt="Team collaboration illustration"
               className="relative z-10 w-full drop-shadow-2xl"
               onError={(e) => {

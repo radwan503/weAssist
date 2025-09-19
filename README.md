@@ -1,9 +1,4 @@
-# weAssist Maintenance & Support (Next.js)
-
-A professional landing site for 24/7 website maintenance & technical support. Built with **Next.js App Router**, **Tailwndcss**, and **Geist fonts**. Includes production-ready SEO defaults (OpenGraph, Twitter, JSON-LD, robots, sitemap, OG image).
-
-## ✨ Features
-# 🌐 ProCare Maintenance & Support Website
+# 🌐 weAssist Maintenance & Support Website
 
 A professional landing site for **24/7 website maintenance, support, and incident response services**, built with **Next.js App Router**.  
 Includes **SEO-optimized pages, structured metadata, JSON-LD schema**, and ready-to-deploy Vercel setup.

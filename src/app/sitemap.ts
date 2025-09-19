@@ -1,14 +1,18 @@
 import type { MetadataRoute } from "next";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = "https://www.yourdomain.com";
-  const now = new Date();
+export const dynamic = "force-static"; // required for output: 'export'
+export const revalidate = false;       // explicit: no ISR
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com";
+  // Use fixed dates or build-time constants for static export.
+  const lastModified = new Date("2025-01-01"); // or the date you last updated
+
   return [
-    { url: `${base}/`, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${base}/maintenance`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/support`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/incident`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    // add blog posts, etc.
+    { url: `${base}/`,            lastModified, changeFrequency: "daily",   priority: 1.0 },
+    { url: `${base}/maintenance`, lastModified, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${base}/support`,     lastModified, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${base}/incident`,    lastModified, changeFrequency: "weekly",  priority: 0.7 },
+    { url: `${base}/contact`,     lastModified, changeFrequency: "monthly", priority: 0.6 },
   ];
 }

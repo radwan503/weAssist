@@ -36,14 +36,14 @@ export function Navbar() {
             {/* Hover / Focus dropdown */}
             <div className="pointer-events-none absolute left-0 top-full pt-3 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
               <div className="min-w-[16rem] rounded-xl bg-white p-1 text-slate-800 shadow-2xl ring-1 ring-black/5">
-                <DropdownItem href="/maintenance" title="Maintenance" desc="Patch, monitor, optimize" />
-                <DropdownItem href="/support" title="24/7 Support" desc="Chat + on-call" />
-                <DropdownItem href="/incident" title="Incident Response" desc="Triage to recovery" />
+                <DropdownItem href="/weAssist/maintenance" title="Maintenance" desc="Patch, monitor, optimize" />
+                <DropdownItem href="/weAssist/support" title="24/7 Support" desc="Chat + on-call" />
+                <DropdownItem href="/weAssist/incident" title="Incident Response" desc="Triage to recovery" />
               </div>
             </div>
           </div>
 
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="/weAssist/contact">Contact</NavLink>
           <CTA href="#get-started">Get started</CTA>
         </nav>
 
@@ -78,13 +78,13 @@ export function Navbar() {
                 <Chevron className={`h-4 w-4 text-slate-600 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               <div className={`${mobileServicesOpen ? 'block' : 'hidden'} pb-2 pl-2`}>                
-                <a href="/maintenance" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Maintenance</a>
-                <a href="/support" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">24/7 Support</a>
-                <a href="/incident" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Incident Response</a>
+                <a href="/weAssist/maintenance" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Maintenance</a>
+                <a href="/weAssist/support" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">24/7 Support</a>
+                <a href="/weAssist/incident" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Incident Response</a>
               </div>
             </div>
 
-            <a href="/contact" className="block border-t px-6 py-3 hover:bg-slate-50">
+            <a href="/weAssist/contact" className="block border-t px-6 py-3 hover:bg-slate-50">
               Contact
             </a>
             <div className="border-t px-6 py-4">

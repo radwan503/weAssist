@@ -1,100 +1,107 @@
+// app/components/Navbar.tsx
 'use client'
 
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Menu, X, ChevronDown, Headphones, Wrench, LifeBuoy, Zap } from 'lucide-react'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  // Detect scroll and progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+      const currentScroll = window.scrollY
+      const scrollProgress = (currentScroll / totalScroll) * 100
+      setProgress(scrollProgress)
+      setScrolled(currentScroll > 30)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-br from-[#7c3aed] via-[#7c4dff] to-[#8b5cf6] text-white">
-      {/* Glass background */}
-      <div className="pointer-events-none absolute inset-0 z-[-1]" aria-hidden>
-        <div className="h-16 w-full bg-gradient-to-b from-black/10 to-transparent" />
-      </div>
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-gradient-to-r from-white to-white backdrop-blur-md shadow'
+          : 'bg-gradient-to-r from-white via-slate-50 to-white'
+      }`}
+    >
+      {/* Progress bar */}
+      <div
+        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-all duration-150"
+        style={{ width: `${progress}%` }}
+      />
 
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 md:py-4">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 md:py-5">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <div className="flex items-center gap-2">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 text-2xl text-white shadow">❤</div>
-              <div className="text-2xl font-extrabold text-slate-900 dark:text-white"><span className="text-sky-600">we</span>Assist</div>
-            </div>
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 text-2xl text-white shadow">❤</div>
+            <div className="text-2xl font-extrabold  text-slate-700 "><span className="text-sky-600">we</span>Assist</div>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-2 md:flex">
-          <NavLink href="/">Home</NavLink>
-
+        <nav className="hidden items-center gap-6 md:flex">
+          <NavLink href="/weAssist">Home</NavLink>
           {/* Services dropdown */}
           <div className="group relative">
-            <button className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-white/90 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
-              <span>Services</span>
-              <Chevron className="h-4 w-4 transition-transform group-hover:rotate-180" />
+            <button className="flex items-center gap-1 text-slate-700 transition hover:text-slate-900 focus:outline-none">
+              Services
+              <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
             </button>
-            {/* Hover / Focus dropdown */}
-            <div className="pointer-events-none absolute left-0 top-full pt-3 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-              <div className="min-w-[16rem] rounded-xl bg-white p-1 text-slate-800 shadow-2xl ring-1 ring-black/5">
-                <DropdownItem href="/weAssist/maintenance" title="Maintenance" desc="Patch, monitor, optimize" />
-                <DropdownItem href="/weAssist/support" title="24/7 Support" desc="Chat + on-call" />
-                <DropdownItem href="/weAssist/incident" title="Incident Response" desc="Triage to recovery" />
-              </div>
+            <div className="invisible absolute left-0 top-full mt-2 w-56 translate-y-1 rounded-xl border border-slate-200 bg-white shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              <DropdownItem icon={<Wrench />} href="/weAssist/maintenance" title="Maintenance" desc="Patch & optimize" />
+              <DropdownItem icon={<Headphones />} href="/weAssist/support" title="24/7 Support" desc="Always available" />
+              <DropdownItem icon={<LifeBuoy />} href="/weAssist/incident" title="Incident Response" desc="Triage to recovery" />
             </div>
           </div>
 
           <NavLink href="/weAssist/contact">Contact</NavLink>
-          <CTA href="#get-started">Get started</CTA>
+          <CTA href="#get-started">Get Started</CTA>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Toggle */}
         <button
           aria-label="Open menu"
           onClick={() => setMobileOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white backdrop-blur ring-1 ring-white/20 md:hidden"
+          className="md:hidden rounded-lg p-2 text-slate-700 hover:bg-slate-100"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-5 w-5">
-            <path strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="mx-auto w-full max-w-7xl px-4 pb-4 md:hidden">
-          <div className="overflow-hidden rounded-2xl bg-white text-slate-900 shadow-2xl ring-1 ring-slate-200">
-            <Link href="/" className="block px-6 py-3 hover:bg-slate-50">
-              Home
-            </Link>
-
-            {/* Mobile accordion for Services */}
-            <div className="border-t border-slate-200">
+        <div className="border-t border-slate-200 bg-white/80 backdrop-blur-md md:hidden">
+          <div className="px-4 py-4 space-y-2">
+            <Link href="/weAssist" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Home</Link>
+            {/* Mobile accordion */}
+            <div>
               <button
                 onClick={() => setMobileServicesOpen((v) => !v)}
-                className="flex w-full items-center justify-between px-6 py-3 hover:bg-slate-50"
-                aria-expanded={mobileServicesOpen}
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 hover:bg-slate-100"
               >
                 <span>Services</span>
-                <Chevron className={`h-4 w-4 text-slate-600 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
               </button>
-              <div className={`${mobileServicesOpen ? 'block' : 'hidden'} pb-2 pl-2`}>                
-                <a href="/weAssist/maintenance" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Maintenance</a>
-                <a href="/weAssist/support" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">24/7 Support</a>
-                <a href="/weAssist/incident" className="block rounded-lg px-6 py-2 text-sm hover:bg-slate-50">Incident Response</a>
-              </div>
+              {mobileServicesOpen && (
+                <div className="mt-1 space-y-1 pl-4">
+                  <Link href="/weAssist/maintenance" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Maintenance</Link>
+                  <Link href="/weAssist/support" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">24/7 Support</Link>
+                  <Link href="/weAssist/incident" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Incident Response</Link>
+                </div>
+              )}
             </div>
 
-            <a href="/weAssist/contact" className="block border-t px-6 py-3 hover:bg-slate-50">
-              Contact
-            </a>
-            <div className="border-t px-6 py-4">
-              <a
-                href="#get-started"
-                className="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:-translate-y-0.5 transition"
-              >
-                Get started
-              </a>
-            </div>
+            <Link href="/weAssist/contact" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Contact</Link>
+            <CTA href="#get-started" className="w-full">Get Started</CTA>
           </div>
         </div>
       )}
@@ -105,42 +112,32 @@ export function Navbar() {
 /* ——— Subcomponents ——— */
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a
-      href={href}
-      className="rounded-lg px-3 py-2 text-white/90 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-    >
+    <a href={href} className="text-slate-700 transition hover:text-slate-900">
       {children}
     </a>
   )
 }
 
-function CTA({ href, children }: { href: string; children: React.ReactNode }) {
+function CTA({ href, children, className = '' }: { href: string; children: React.ReactNode; className?: string }) {
   return (
     <a
       href={href}
-      className="ml-2 inline-flex items-center justify-center rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-white/20 backdrop-blur transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      className={`inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition hover:scale-105 hover:bg-slate-800 ${className}`}
     >
+      <Zap className="mr-2 h-4 w-4" />
       {children}
     </a>
   )
 }
 
-function DropdownItem({ href, title, desc }: { href: string; title: string; desc: string }) {
+function DropdownItem({ icon, href, title, desc }: { icon?: React.ReactNode; href: string; title: string; desc: string }) {
   return (
-    <a href={href} className="flex items-start gap-3 rounded-lg p-3 hover:bg-slate-100">
-      <div className="mt-0.5 h-2.5 w-2.5 rounded-full bg-slate-900" />
+    <a href={href} className="flex items-start gap-3 px-4 py-3 hover:bg-slate-50 transition">
+      <div className="mt-0.5 text-slate-600">{icon}</div>
       <div>
-        <div className="text-sm font-semibold text-slate-900">{title}</div>
-        <div className="text-xs text-slate-600">{desc}</div>
+        <div className="text-sm font-semibold text-slate-800">{title}</div>
+        <div className="text-xs text-slate-500">{desc}</div>
       </div>
     </a>
-  )
-}
-
-function Chevron({ className = 'h-4 w-4' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className={className} aria-hidden>
-      <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.585l3.71-3.355a.75.75 0 111.02 1.1l-4.22 3.815a.75.75 0 01-1.02 0L5.25 8.33a.75.75 0 01-.02-1.12z" />
-    </svg>
   )
 }

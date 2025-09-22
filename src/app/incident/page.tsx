@@ -56,7 +56,7 @@ export default function IncidentResponsePage() {
     <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-indigo-50 text-slate-900">
       {/* Topbar */}
       <header className="sticky top-0 z-10 border-b border-slate-200/80 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 lg:px-6 py-3">
           <div className="flex items-center gap-2">
             <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-white font-black">
               IR
@@ -104,7 +104,7 @@ export default function IncidentResponsePage() {
 
       {/* Status banner */}
       <section className="border-b border-slate-200 bg-gradient-to-r from-indigo-100 via-fuchsia-50 to-emerald-100">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-3 px-4 lg:px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <PulseIcon />
             <p className="text-sm text-slate-700">
@@ -130,7 +130,7 @@ export default function IncidentResponsePage() {
       </section>
 
       {/* Main content */}
-      <main className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 pb-20 lg:grid-cols-[1.1fr_0.9fr]">
+      <main className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 lg:px-6 pt-8 pb-20 lg:grid-cols-[1.1fr_0.9fr]">
         {/* Left column */}
         <section>
           {/* Filters */}

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NEXT_PUBLIC_MODE === "production";
+const isProd = process.env.NEXT_PUBLIC_MODE === "development";
 const repo = "weAssist"; // your repo name
 
 export default {

@@ -27,7 +27,7 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-gradient-to-r from-white to-white backdrop-blur-md shadow'
+          ? 'bg-gradient-to-r from-indigo-100 to-slate-100 backdrop-blur-md shadow'
           : 'bg-gradient-to-r from-white via-slate-50 to-white'
       }`}
     >

@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NEXT_PUBLIC_MODE === 'development';
+const isProd = process.env.NEXT_PUBLIC_MODE === "production";
+const repo = "weAssist"; // your repo name
 
-module.exports = {
-  basePath: isProd ? '/weAssist' : '',
-  assetPrefix: isProd ? '/weAssist/' : '',
+export default {
+  output: "export",
+  basePath: isProd ? `/${repo}` : "",
+  assetPrefix: isProd ? `/${repo}/` : "",
+  images: { unoptimized: true }, // static export on GH Pages
+  trailingSlash: true,           // generates .../index.html per folder
 };

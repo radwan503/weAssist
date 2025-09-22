@@ -1,4 +1,3 @@
-// app/components/Navbar.tsx
 'use client'
 
 import Link from 'next/link'
@@ -49,7 +48,7 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 md:flex">
-          <NavLink href="/weAssist">Home</NavLink>
+          <NavLink href="/">Home</NavLink>
           {/* Services dropdown */}
           <div className="group relative">
             <button className="flex items-center gap-1 text-slate-700 transition hover:text-slate-900 focus:outline-none">
@@ -57,13 +56,13 @@ export function Navbar() {
               <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-0 top-full mt-2 w-56 translate-y-1 rounded-xl border border-slate-200 bg-white shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-              <DropdownItem icon={<Wrench />} href="/weAssist/maintenance" title="Maintenance" desc="Patch & optimize" />
-              <DropdownItem icon={<Headphones />} href="/weAssist/support" title="24/7 Support" desc="Always available" />
-              <DropdownItem icon={<LifeBuoy />} href="/weAssist/incident" title="Incident Response" desc="Triage to recovery" />
+              <DropdownItem icon={<Wrench />} href="/maintenance" title="Maintenance" desc="Patch & optimize" />
+              <DropdownItem icon={<Headphones />} href="/support" title="24/7 Support" desc="Always available" />
+              <DropdownItem icon={<LifeBuoy />} href="/incident" title="Incident Response" desc="Triage to recovery" />
             </div>
           </div>
 
-          <NavLink href="/weAssist/contact">Contact</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
           <CTA href="#get-started">Get Started</CTA>
         </nav>
 
@@ -81,7 +80,7 @@ export function Navbar() {
       {mobileOpen && (
         <div className="border-t border-slate-200 bg-white/80 backdrop-blur-md md:hidden">
           <div className="px-4 py-4 space-y-2">
-            <Link href="/weAssist" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Home</Link>
+            <Link href="/" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Home</Link>
             {/* Mobile accordion */}
             <div>
               <button
@@ -93,14 +92,14 @@ export function Navbar() {
               </button>
               {mobileServicesOpen && (
                 <div className="mt-1 space-y-1 pl-4">
-                  <Link href="/weAssist/maintenance" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Maintenance</Link>
-                  <Link href="/weAssist/support" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">24/7 Support</Link>
-                  <Link href="/weAssist/incident" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Incident Response</Link>
+                  <Link href="/maintenance" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Maintenance</Link>
+                  <Link href="/support" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">24/7 Support</Link>
+                  <Link href="/incident" className="block rounded px-3 py-2 text-sm hover:bg-slate-100">Incident Response</Link>
                 </div>
               )}
             </div>
 
-            <Link href="/weAssist/contact" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Contact</Link>
+            <Link href="/contact" className="block rounded-lg px-3 py-2 hover:bg-slate-100">Contact</Link>
             <CTA href="#get-started" className="w-full">Get Started</CTA>
           </div>
         </div>

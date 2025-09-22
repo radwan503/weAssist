@@ -48,7 +48,7 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 md:flex">
-          <NavLink href="/">Home</NavLink>
+          <NavLink href="/weAssist">Home</NavLink>
           {/* Services dropdown */}
           <div className="group relative">
             <button className="flex items-center gap-1 text-slate-700 transition hover:text-slate-900 focus:outline-none">
@@ -56,13 +56,13 @@ export function Navbar() {
               <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-0 top-full mt-2 w-56 translate-y-1 rounded-xl border border-slate-200 bg-white shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-              <DropdownItem icon={<Wrench />} href="/maintenance" title="Maintenance" desc="Patch & optimize" />
-              <DropdownItem icon={<Headphones />} href="/support" title="24/7 Support" desc="Always available" />
-              <DropdownItem icon={<LifeBuoy />} href="/incident" title="Incident Response" desc="Triage to recovery" />
+              <DropdownItem icon={<Wrench />} href="/weAssist/maintenance" title="Maintenance" desc="Patch & optimize" />
+              <DropdownItem icon={<Headphones />} href="/weAssist/support" title="24/7 Support" desc="Always available" />
+              <DropdownItem icon={<LifeBuoy />} href="/weAssist/incident" title="Incident Response" desc="Triage to recovery" />
             </div>
           </div>
 
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="/weAssist/contact">Contact</NavLink>
           <CTA href="#get-started">Get Started</CTA>
         </nav>
 

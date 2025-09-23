@@ -49,7 +49,7 @@ export function Navbar() {
         'sticky top-0 z-50',
         'transition-all duration-300',
         scrolled
-          ? 'bg-white/70 backdrop-blur-xl border-b border-slate-200/60 shadow-sm'
+          ? 'bg-white/70 backdrop-blur-xl  shadow-sm'
           : 'bg-gradient-to-r from-white via-slate-50 to-white',
         motion,
       ].join(' ')}
@@ -76,7 +76,7 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-2 md:flex" aria-label="Main">
-            <NavLink href="/weAssist" active={pathname === '/weAssist'}>
+            <NavLink href="/" active={pathname === '/'}>
               Home
             </NavLink>
 
@@ -103,19 +103,19 @@ export function Navbar() {
                 role="menu"
               >
                 <DropdownItem
-                  href="/weAssist/maintenance"
+                  href="/maintenance"
                   icon={<Wrench className="h-4 w-4" />}
                   title="Maintenance"
                   desc="Patch, tune, and ship fast."
                 />
                 <DropdownItem
-                  href="/weAssist/support"
+                  href="/support"
                   icon={<Headphones className="h-4 w-4" />}
                   title="24/7 Support"
                   desc="Always-on help desk."
                 />
                 <DropdownItem
-                  href="/weAssist/incident"
+                  href="/incident"
                   icon={<LifeBuoy className="h-4 w-4" />}
                   title="Incident Response"
                   desc="From triage to recovery."
@@ -123,7 +123,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <NavLink href="/weAssist/contact" active={pathname === '/weAssist/contact'}>
+            <NavLink href="/contact" active={pathname === '/contact'}>
               Contact
             </NavLink>
 
@@ -189,7 +189,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <MobileItem href="/contact" onClick={() => setMobileOpen(false)} active={pathname === '/weAssist/contact'}>
+            <MobileItem href="/contact" onClick={() => setMobileOpen(false)} active={pathname === '/contact'}>
               Contact
             </MobileItem>
 
